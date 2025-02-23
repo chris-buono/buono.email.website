@@ -23,3 +23,24 @@
 }
 
 
+
+html,
+body {
+  @apply bg-white dark:bg-gray-900;
+  font-display: swap;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+.b-root {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+.b-root::-webkit-scrollbar{width:10px; background-color: transparent}
+.b-root::-webkit-scrollbar-thumb:hover{background-color: var(--color-stone-400)}
+.b-root::-webkit-scrollbar-thumb{
+  border-left:none;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}

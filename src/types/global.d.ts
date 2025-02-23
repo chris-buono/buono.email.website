@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode, MouseEventHandler } from 'react';
 import { NextComponentType, NextPageContext } from 'next';
 
@@ -8,12 +9,11 @@ declare module '*.svg' {
 }
   
 declare module '*.svg?url' {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const content: any
     export default content
 }
 
-export interface Link {
+export interface LinkType {
     rel: string;
     href: string;
     crossOrigin?: string;
@@ -73,36 +73,17 @@ export interface Project {
   textContent: string;
   stats?: Record<string | Node, string | Node>;
   description: string;
-  navigation?: String;
+  navigation?: string;
 }
 
+export interface BaseMetadataProps {
+    title?: string;
+    description?: string;
+    keywords?: string;
+    url?: string;
+    image?: string;
+}
 
-
-/*  custom hook type 
-        export type UseStateType<T> = {
-            value: T;
-            setValue: React.Dispatch<React.SetStateAction<T>>;
-        };
-*/
-
-/*  Context types
-        export interface ThemeContextProps {
-            theme: string;
-            toggleTheme: () => void;
-        }
-*/
-
-export type Theme = 'light' | 'dark';
-
-/*  Props for a component that uses a custom hook
-        export interface MyComponentProps {
-            title: string;
-            theme: Theme;
-            children: ReactNode;
-        }
-*/
-
-// Global Types
 declare global {
     type GlobalErrorHandler = (error: Error) => void;
 
@@ -127,7 +108,7 @@ declare global {
     };
 
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export type CustomPageComponent = NextComponentType<NextPageContext, any, any> & {
   noLayout?: boolean;
 };

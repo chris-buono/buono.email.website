@@ -16,13 +16,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Header />
       <div className="flex flex-1">
         <LeftAside />
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-4 b-root">
           {children}
         </div>
         <RightAside />
       </div>
       <Footer />
-      <Notification className="fixed bottom-0 right-0 m-4 p-4 bg-blue-500 text-white rounded-sm" />
+      <Notification message={'Welcome!'} />
     </div>
   );
 };

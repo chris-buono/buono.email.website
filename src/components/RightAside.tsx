@@ -5,6 +5,7 @@ import Link from 'next/link';
 import chris from '../assets/chris.jpg';
 import { MdPerson, MdOutlineHandshake, MdOutlineFolderCopy } from "react-icons/md";
 import { usePathname } from 'next/navigation';
+import DOMPurify from 'isomorphic-dompurify';
 
 
 /*
@@ -55,7 +56,15 @@ const menuitems: AsideMenu[] = [
 
 
 const UserProfileSidebar: React.FC = () => {
-    const currentPathname = usePathname()
+    const currentPathname = usePathname();
+    const getSubpath = (basePath: string) => {
+        if (currentPathname.startsWith(basePath)) {
+            const subpath = currentPathname.replace(basePath, '').replace('/', '');
+            return DOMPurify.sanitize(subpath) || null;
+        }
+        return null;
+    };
+
   return (
     <div className="bg-gray-900 p-4 w-64 md:block hidden">
       <div className="p-2">
@@ -64,6 +73,7 @@ const UserProfileSidebar: React.FC = () => {
           <Image
             src={chris}
             alt="Image of Chris"
+            priority
             className="w-35 h-35 rounded-full border-2 border-slate-900"
           />
           <h2 className="text-xl font-semibold mb-0 text-stone-100">Chris Buono</h2>
@@ -75,11 +85,12 @@ const UserProfileSidebar: React.FC = () => {
           <ul className="space-y-1">
             {menuitems.map((itm, index) => {
               const Icon = itm?.icon;
+              const subpath = getSubpath(itm.navigation);
               return (
                 <li key={index}>
-                  <Link href={itm.navigation} className={`flex ${currentPathname === itm.navigation ? 'bg-white/20' : 'bg-white/0 hover:bg-sky-100/15'} text-white text-md py-1 px-4 rounded-full transition-colors items-center`}>
+                  <Link href={itm.navigation} className={`flex ${currentPathname.startsWith(itm.navigation) ? 'bg-white/20' : 'bg-white/0 hover:bg-sky-100/15'} text-white text-md py-1 px-4 rounded-full transition-colors items-center`}>
                     {Icon && <Icon className="mr-2 text-lg" />}
-                    {itm.linkTitle}
+                    {itm.linkTitle}{subpath && (<span className="sr-only">currently viewing {subpath}</span>)}
                   </Link>
                 </li>
               );

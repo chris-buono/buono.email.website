@@ -1,12 +1,13 @@
 {
     "title": "Worldsy",
     "subtitle": "Event Based News Aggregator",
+    "description": "Semi-Abandoned event based news aggregator",
     "media": {
         "images": [
-            "/public/projects/worldsy/worldsy.jpg",
-            "/app/assets/worldsy_whiteboard.jpg",
-            "/app/assets/worldsy_notes.jpg",
-            "/app/assets/worldsy_recharging.jpg"
+            {"src": "/projects/worldsy/worldsy.jpg",
+            "alt": "alt1"},
+            {"src": "/projects/worldsy/worldsy_whiteboard.jpg",
+            "alt": "alt2"}
         ],
         "externalLinks": [
             {
