@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 
 const InboxEmail = () => {
   const router = useRouter();
-  const { projectId } = router.query;
+  const { emailId } = router.query;
 
-  return <div>Project ID: {projectId}</div>;
+  return <div>Inbox ID: {emailId}</div>;
 };
 
 export default InboxEmail;

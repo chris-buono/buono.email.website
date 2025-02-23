@@ -1,10 +1,12 @@
-import { useRouter } from 'next/router';
+import Head from "next/head";
 
-const Inbox = () => {
-  const router = useRouter();
-  const { projectId } = router.query;
-
-  return <div>Project ID: {projectId}</div>;
+const Projects = () => {
+  return (<>
+    <Head>
+      <title>Projects {process.env.pageTitle}</title>
+    </Head>
+    <h1>Project Index</h1>
+  </>);
 };
 
-export default Inbox;
+export default Projects;

@@ -1,0 +1,34 @@
+{
+    "title": "Worldsy",
+    "subtitle": "Event Based News Aggregator",
+    "media": {
+        "images": [
+            "/public/projects/worldsy/worldsy.jpg",
+            "/app/assets/worldsy_whiteboard.jpg",
+            "/app/assets/worldsy_notes.jpg",
+            "/app/assets/worldsy_recharging.jpg"
+        ],
+        "externalLinks": [
+            {
+                "label": "Worldsy",
+                "url": "https://worldsy.com",
+                "isAffiliate": false
+            }
+        ],
+        "downloads": [
+            {
+                "label": "Download 1",
+                "url": "/files/project1.zip"
+            }
+        ]
+    },
+    "steps": [
+        "1) Do this",
+        "2) Do that"
+    ],
+    "textContent": "Description of the project",
+    "stats": {
+        "Weight": "1kg",
+        "Material": "PLA"
+    }
+}

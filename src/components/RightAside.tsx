@@ -57,34 +57,36 @@ const menuitems: AsideMenu[] = [
 const UserProfileSidebar: React.FC = () => {
     const currentPathname = usePathname()
   return (
-    <div className="p-6">
-      {/* User Profile */}
-      <div className="flex flex-col items-center space-y-4">
-        <Image
-          src={chris}
-          alt="Image of Chris"
-          className="w-35 h-35 rounded-full border-2 border-stone-500"
-        />
-        <h2 className="text-xl font-semibold mb-0 text-stone-100">Chris Buono</h2>
-        <p className='text-xs font-normal text-center text-stone-50'>Welcome to the inbox of my mind.</p>
+    <div className="bg-gray-900 p-4 w-64 md:block hidden">
+      <div className="p-2">
+        {/* User Profile */}
+        <div className="flex flex-col items-center space-y-4">
+          <Image
+            src={chris}
+            alt="Image of Chris"
+            className="w-35 h-35 rounded-full border-2 border-slate-900"
+          />
+          <h2 className="text-xl font-semibold mb-0 text-stone-100">Chris Buono</h2>
+          <p className='text-xs font-normal text-center text-stone-50'>Welcome to the inbox of my mind.</p>
+        </div>
+        <hr className="mt-2 opacity-30" />
+        {/* Navigation */}
+        <nav className="mt-2">
+          <ul className="space-y-1">
+            {menuitems.map((itm, index) => {
+              const Icon = itm?.icon;
+              return (
+                <li key={index}>
+                  <Link href={itm.navigation} className={`flex ${currentPathname === itm.navigation ? 'bg-white/20' : 'bg-white/0 hover:bg-sky-100/15'} text-white text-md py-1 px-4 rounded-full transition-colors items-center`}>
+                    {Icon && <Icon className="mr-2 text-lg" />}
+                    {itm.linkTitle}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
-      <hr className="mt-2 opacity-30" />
-      {/* Navigation */}
-      <nav className="mt-2">
-        <ul className="space-y-1">
-          {menuitems.map((itm, index) => {
-            const Icon = itm?.icon;
-            return (
-              <li key={index}>
-                <Link href={itm.navigation} className={`flex ${currentPathname === itm.navigation ? 'bg-opacity-30 ' : ' '}text-md py-1 px-4 rounded-full transition-colors items-center bg-stone-600 hover:bg-stone-700`}>
-                  {Icon && <Icon className="mr-2 text-lg" />}
-                  {itm.linkTitle}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
     </div>
   );
 };

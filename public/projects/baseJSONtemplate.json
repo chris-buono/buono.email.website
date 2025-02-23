@@ -1,0 +1,50 @@
+{
+  "title": "3D Printed Desk Organizer",
+  "subtitle": "A custom desk organizer made using 3D printing technology.",
+  "media": {
+    "images": [
+      {
+        "src": "images/desk-organizer-1.jpg",
+        "alt": "Front view of the desk organizer"
+      },
+      {
+        "src": "images/desk-organizer-2.jpg",
+        "alt": "Side view of the desk organizer"
+      }
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "stlUrl": "https://example.com/files/desk-organizer.stl",
+    "externalLinks": [
+      {
+        "text": "3D Printer used",
+        "href": "https://affiliate-link-to-printer.com",
+        "isAffiliate": true
+      },
+      {
+        "text": "Printing material",
+        "href": "https://affiliate-link-to-material.com",
+        "isAffiliate": true
+      }
+    ],
+    "downloads": [
+      {
+        "label": "Desk Organizer Files",
+        "url": "https://example.com/downloads/desk-organizer.zip"
+      }
+    ]
+  },
+  "steps": [
+    "Step 1: Design the organizer using 3D modeling software.",
+    "Step 2: Prepare the 3D printer with the appropriate material.",
+    "Step 3: Print the organizer and wait for it to cool.",
+    "Step 4: Assemble the printed parts into the final desk organizer."
+  ],
+  "textContent": "This project demonstrates how to create a desk organizer using a 3D printer. It includes designing the object, selecting materials, and assembling the final piece.",
+  "stats": {
+    "Weight": "250g",
+    "Material": "PLA",
+    "Cost": "$15",
+    "Size": "20cm x 15cm x 10cm"
+  },
+  "description": "This 3D printed desk organizer helps you keep your office space neat and tidy. It's customizable and easy to print using any standard 3D printer."
+}

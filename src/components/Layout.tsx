@@ -15,14 +15,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-1">
-        <LeftAside className="bg-gray-200 p-4 w-64 md:block hidden" />
+        <LeftAside />
         <div className="flex-1 p-4">
           {children}
         </div>
-        <RightAside className="bg-gray-200 p-4 w-64 md:block hidden" />
+        <RightAside />
       </div>
-      <Footer className="bg-gray-800 text-white p-4 text-center" />
-      <Notification className="fixed bottom-0 right-0 m-4 p-4 bg-blue-500 text-white rounded" />
+      <Footer />
+      <Notification className="fixed bottom-0 right-0 m-4 p-4 bg-blue-500 text-white rounded-sm" />
     </div>
   );
 };

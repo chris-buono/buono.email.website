@@ -1,1 +1,25 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --cb-ftr-min-hgt: 40px;
+    --cb-ftr-max-hgt: 40px;
+    --cb-hdr-min-hgt: 40px;
+    --cb-hdr-max-hgt: 40px;
+    --cb-main-hgt: calc(100vh - var(--cb-hdr-max-hgt) - var(--cb-ftr-max-hgt));
+    --cb-out-hgt: calc(100vh - var(--cb-ftr-max-hgt));
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+

@@ -1,10 +1,6 @@
-import { useRouter } from 'next/router';
 
 const Inbox = () => {
-  const router = useRouter();
-  const { projectId } = router.query;
-
-  return <div>Project ID: {projectId}</div>;
+  return <h1>Inbox</h1>;
 };
 
 export default Inbox;
