@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="159mm" height="138.494" viewBox="0 0 159 36.643">
+    <g style="opacity:1">
+        <path style="fill:#000;stroke-width:.264583" d="M177 139.5h7v7h-7z" transform="translate(-25 -109.857)"/>
+        <circle style="fill:#000;stroke-width:.246944" cx="160.557" cy="-132.5" r="14" transform="matrix(1 0 0 -1 -25 -109.857)"/>
+        <path style="fill:#000;stroke-width:.23665" d="M117 130.5h7v16h-7zM136 130.5h7v16h-7z" transform="translate(-25 -109.857)"/>
+        <circle style="fill:#000;stroke-width:.246944" cx="99" cy="-132.5" r="14" transform="matrix(1 0 0 -1 -25 -109.857)"/>
+        <path style="fill:#000;stroke-width:.236652" d="M56.5 118.5h7v16h-7z" transform="translate(-25 -109.857)"/>
+        <path style="fill:#000;stroke-width:.23665" d="M75 118.5h7v16h-7z" transform="translate(-25 -109.857)"/>
+        <g transform="translate(-25 -109.857)">
+            <circle style="fill:#000;stroke-width:.246944" cx="39" cy="-132.5" r="14" transform="scale(1 -1)"/>
+            <path style="fill:#000;stroke-width:.264583" d="M25 109.857h7v7h-7z"/>
+        </g>
+    </g>
+</svg>

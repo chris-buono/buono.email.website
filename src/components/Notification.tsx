@@ -1,0 +1,42 @@
+import React, { useState, useEffect } from 'react';
+
+export type ToastType = 'success' | 'error' | 'info';
+
+export interface NotificationProps {
+  message: string;
+  type?: ToastType;
+  duration?: number; // Duration in milliseconds
+}
+
+const Notification: React.FC<NotificationProps> = ({
+  message,
+  type = 'info',
+  duration = 3000,
+}) => {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    // Auto-dismiss the toast after the specified duration
+    const timer = setTimeout(() => setVisible(false), duration);
+    return () => clearTimeout(timer);
+  }, [duration]);
+
+  if (!visible) return null;
+
+  // Tailwind CSS classes for different notification types
+  const typeClasses: Record<ToastType, string> = {
+    success: 'bg-green-500',
+    error: 'bg-red-500',
+    info: 'bg-blue-500',
+  };
+
+  return (
+    <div
+      className={`fixed top-5 right-5 ${typeClasses[type]} text-white px-6 py-3 rounded shadow-lg transition-opacity duration-300`}
+    >
+      {message}
+    </div>
+  );
+};
+
+export default Notification;
