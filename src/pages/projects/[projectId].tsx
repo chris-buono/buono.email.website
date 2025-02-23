@@ -1,6 +1,6 @@
 // pages/projects/[projectId].tsx
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';

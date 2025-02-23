@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { MdOutlineClose } from "react-icons/md";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 /*
     I created a shell function that added basic blur and gifs, then used AI to fix some of the errors and add in the character removal as it came to mind.
     This introduced new errors due to project context. So I manually adjusted and worked through the individual errors,
