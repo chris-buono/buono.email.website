@@ -1,3 +1,4 @@
+import { ReactNode, MouseEventHandler } from 'react';
 import { NextComponentType, NextPageContext } from 'next';
 
 declare module '*.svg' {
@@ -20,7 +21,113 @@ export interface Link {
     sizes?: string;
 }
 
-// Define a custom type for page components with an optional noLayout property
+// Component Props Example
+export interface ButtonProps {
+    onClick: MouseEventHandler<HTMLButtonElement>;
+    children: ReactNode;
+}
+export interface TimeDisplayProps {
+    epochTime?: number;
+    isSeconds?: boolean;
+    forceFormat?: string;
+    setPreface?: string;
+    setPostface?: string;
+    live?: boolean;
+}
+
+export interface ExternalLink {
+    text: string;
+    href: string;
+    isAffiliate: boolean;
+}
+  
+export interface Download {
+    label: string;
+    url: string;
+}
+
+export interface Media {
+    images: string[];
+    videoUrl?: string;
+    stlUrl?: string;
+    externalLinks?: ExternalLink[];
+    downloads?: Download[];
+}
+
+export interface ImageProps {
+    src: string;
+    alt: string;
+}
+
+export interface Project {
+  title: string;
+  subtitle: string;
+  media: {
+    images: ImageProps[];
+    videoUrl?: string;
+    stlUrl?: string;
+    externalLinks?: ExternalLink[];
+    downloads?: Download[];
+  };
+  steps: string[];
+  textContent: string;
+  stats?: Record<string | Node, string | Node>;
+  description: string;
+  navigation?: String;
+}
+
+
+
+/*  custom hook type 
+        export type UseStateType<T> = {
+            value: T;
+            setValue: React.Dispatch<React.SetStateAction<T>>;
+        };
+*/
+
+/*  Context types
+        export interface ThemeContextProps {
+            theme: string;
+            toggleTheme: () => void;
+        }
+*/
+
+export type Theme = 'light' | 'dark';
+
+/*  Props for a component that uses a custom hook
+        export interface MyComponentProps {
+            title: string;
+            theme: Theme;
+            children: ReactNode;
+        }
+*/
+
+// Global Types
+declare global {
+    type GlobalErrorHandler = (error: Error) => void;
+
+    type Email = {
+        id: number;
+        thumbnail: string;
+        tags: string[];
+        subject: string;
+        sender: string;
+        description: string;
+        content: string;
+        inboxDate?: TimeDisplayProps;
+        private?: boolean;
+    };
+
+    type AsideMenu = {
+        id: number;
+        navigation: string;
+        icon?: IconType;
+        setNotice?: string;
+        linkTitle?: string;
+    };
+
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type CustomPageComponent = NextComponentType<NextPageContext, any, any> & {
   noLayout?: boolean;
 };
