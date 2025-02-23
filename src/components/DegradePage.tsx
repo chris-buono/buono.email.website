@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { MdOutlineClose } from "react-icons/md";
-import Image from "next/legacy/image";
+import Image from "next/image";
 /*
     I created a shell function that added basic blur and gifs, then used AI to fix some of the errors and add in the character removal as it came to mind.
     This introduced new errors due to project context. So I manually adjusted and worked through the individual errors,
@@ -224,33 +224,32 @@ const DegradePage: React.FC<DegradePageProps> = ({ children }) => {
       ? noteElement
       : null;
 
-  return (
-    <>
-      {!degradeBody && (
-        <div style={containerStyle}>
-          {paragraphs.map((para, index) => (
-            <p key={index}>{para}</p>
-          ))}
-          {gifUrls.map((url, index) => (
-            <Image
-              key={index}
-              src={url}
-              alt="Everything is Fine."
-              style={{
-                position: 'absolute',
-                top: `${Math.random() * 80 + 10}%`,
-                left: `${Math.random() * 80 + 10}%`,
-                width: '40px',
-                height: '40px',
-                pointerEvents: 'none'
-              }}
-            />
-          ))}
-        </div>
-      )}
-      {isDegrading && renderedNote}
-    </>
-  );
+  return (<>
+    {!degradeBody && (
+      <div style={containerStyle}>
+        {paragraphs.map((para, index) => (
+          <p key={index}>{para}</p>
+        ))}
+        {gifUrls.map((url, index) => (
+          <Image
+            key={index}
+            src={url}
+            alt="Everything is Fine."
+            style={{
+              position: 'absolute',
+              top: `${Math.random() * 80 + 10}%`,
+              left: `${Math.random() * 80 + 10}%`,
+              width: '40px',
+              height: '40px',
+              pointerEvents: 'none',
+              maxWidth: "100%",
+              height: "auto"
+            }} />
+        ))}
+      </div>
+    )}
+    {isDegrading && renderedNote}
+  </>);
 };
 
 export default DegradePage;

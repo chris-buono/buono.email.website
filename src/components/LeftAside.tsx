@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from 'next/link';
 import logo from '../assets/buono.email.web.w.svg';
 import { MdDelete, MdOutlineReport, MdEditDocument, MdOutlineSend, MdLabelImportantOutline, MdInbox } from "react-icons/md";
@@ -18,11 +18,18 @@ import { usePathname } from 'next/navigation';
 const EmailSidebar: React.FC = () => {
     const currentPathname = usePathname()
     return (
-        <div className="bg-gray-900 p-4 w-64 md:block hidden">
+        (<div className="bg-gray-900 p-4 w-64 md:block hidden">
             <div className="p-2 pt-0">
                 <div className="flex flex-col items-center space-y-4">
                     <Link href="/">
-                        <Image src={logo} alt="buono.email logo" className="w-50 h-20 stroke-white" />
+                        <Image
+                            src={logo}
+                            alt="buono.email logo"
+                            className="w-50 h-20 stroke-white"
+                            style={{
+                                maxWidth: "100%",
+                                height: "auto"
+                            }} />
                     </Link>
                 </div>
                 <hr className="py-2 opacity-30" />
@@ -79,7 +86,7 @@ const EmailSidebar: React.FC = () => {
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div>)
     );
 };
 

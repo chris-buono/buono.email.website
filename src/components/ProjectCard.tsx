@@ -1,5 +1,5 @@
 import React from 'react';
-import Image, { StaticImageData } from "next/legacy/image";
+import Image, { StaticImageData } from "next/image";
 
 interface CardProps {
     imageSrc: StaticImageData;
@@ -26,7 +26,10 @@ const ProjectCard: React.FC<CardProps> = ({
           src={imageSrc}
           alt="card image"
           className="w-full aspect-16/9 object-cover"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <div className="p-4">
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-semibold text-stone-800">{title}</h3>

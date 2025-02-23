@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from 'next/link';
 import chris from '../assets/chris.jpg';
 import { MdPerson, MdOutlineHandshake, MdOutlineFolderCopy } from "react-icons/md";
@@ -66,7 +66,7 @@ const UserProfileSidebar: React.FC = () => {
     };
 
   return (
-    <div className="bg-gray-900 p-4 w-64 md:block hidden">
+    (<div className="bg-gray-900 p-4 w-64 md:block hidden">
       <div className="p-2">
         {/* User Profile */}
         <div className="flex flex-col items-center space-y-4">
@@ -75,7 +75,10 @@ const UserProfileSidebar: React.FC = () => {
             alt="Image of Chris"
             priority
             className="w-35 h-35 rounded-full border-2 border-slate-900"
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
           <h2 className="text-xl font-semibold mb-0 text-stone-100">Chris Buono</h2>
           <p className='text-xs font-normal text-center text-stone-50'>Welcome to the inbox of my mind.</p>
         </div>
@@ -98,7 +101,7 @@ const UserProfileSidebar: React.FC = () => {
           </ul>
         </nav>
       </div>
-    </div>
+    </div>)
   );
 };
 
