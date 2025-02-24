@@ -66,7 +66,7 @@ const UserProfileSidebar: React.FC = () => {
     };
 
   return (
-    <div id='cb-right-menu' className="bg-gray-900 p-4 w-64 md:block hidden flex-none">
+    <div id='cb-right-menu' className="bg-gray-800 p-4 w-64 md:block hidden flex-none">
       <div className="p-2">
         {/* User Profile */}
         <div className="flex flex-col items-center space-y-4 pb-4">
@@ -74,7 +74,7 @@ const UserProfileSidebar: React.FC = () => {
             src={chris}
             alt="Image of Chris"
             priority
-            className="w-35 h-35 rounded-full border-2 border-slate-900"
+            className="w-35 h-35 rounded-full border-2 border-gray-800"
             style={{
               maxWidth: "100%",
               height: "auto"

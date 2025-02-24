@@ -14,7 +14,7 @@ const EmailSidebar: React.FC = () => {
     <div className="relative">
       {/* Hamburger button: Visible only on mobile (hidden on md and up) */}
       <button
-        className="md:hidden p-2 fixed top-4 left-4 z-50"
+        className="p-2 fixed top-4 left-4 z-50"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
       >
@@ -28,7 +28,7 @@ const EmailSidebar: React.FC = () => {
       {/* Overlay: Appears when sidebar is open on mobile to dim the background and allow closing by clicking outside */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 md:hidden z-30"
+          className="fixed inset-0 bg-black opacity-50 z-30"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
@@ -37,7 +37,7 @@ const EmailSidebar: React.FC = () => {
       {/* Sidebar container: Handles positioning and visibility across screen sizes */}
       <div
         className={`
-          fixed inset-y-0 left-0 w-64 bg-gray-900 transform
+          fixed inset-y-0 left-0 w-64 bg-gray-800 transform
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           transition-transform duration-300 ease-in-out
           md:relative md:translate-x-0 md:block z-40

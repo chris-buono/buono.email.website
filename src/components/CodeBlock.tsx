@@ -43,7 +43,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ lang, code, theme = 'nord' }) => 
 
   return (
     <div
-      className="code-block p-4 rounded-md bg-gray-900 overflow-auto"
+      className="code-block p-4 rounded-md bg-gray-800 overflow-auto"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

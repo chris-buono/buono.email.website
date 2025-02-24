@@ -48,7 +48,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
     </Head>
-    <div className="bg-gray-100 text-gray-900 min-h-screen">
+    <div className="bg-gray-100 text-gray-800 min-h-screen">
       <div className="container mx-auto p-4">
         {/* Header */}
         <header className="mb-8 text-center">

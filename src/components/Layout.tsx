@@ -13,7 +13,7 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col  ">
+    <div className="flex flex-col">
       <Header />
       <main className="flex min-h-(--cb-main-hgt) max-h-(--cb-main-hgt)">
         <LeftAside />
