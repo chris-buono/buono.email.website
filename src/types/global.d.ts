@@ -46,33 +46,33 @@ export interface Download {
     url: string;
 }
 
-export interface Media {
-    images: string[];
-    videoUrl?: string;
-    stlUrl?: string;
-    externalLinks?: ExternalLink[];
-    downloads?: Download[];
-}
-
 export interface ImageProps {
     src: string;
     alt: string;
 }
 
-export interface Project {
-  title: string;
-  subtitle: string;
-  media: {
+export interface CarouselProps {
+    images: ImageProps[];
+    alt?: string;
+}
+
+
+export interface Media {
     images: ImageProps[];
     videoUrl?: string;
     stlUrl?: string;
     externalLinks?: ExternalLink[];
     downloads?: Download[];
   };
-  steps: string[];
-  textContent: string;
-  stats?: Record<string | Node, string | Node>;
+
+export interface Project {
+  title: string;
+  subtitle: string;
+  media: Media;
   description: string;
+  textContent: string;
+  steps?: string[];
+  stats?: Record<string | Node, string | Node>;
   navigation?: string;
 }
 
@@ -108,6 +108,36 @@ declare global {
     };
 
 }
+
+export type CodeBlockProps = {
+    /**
+     * The code string to be highlighted.
+     */
+    code: string;
+  
+    /**
+     * The language of the code for syntax highlighting (e.g., 'javascript', 'typescript').
+     */
+    lang: string;
+  
+    /**
+     * The Shiki theme for highlighting (e.g., 'nord', 'monokai').
+     * Defaults to 'nord'.
+     */
+    theme?: string;
+  
+    /**
+     * Whether to display line numbers.
+     * Defaults to false.
+     */
+    showLineNumbers?: boolean;
+  
+    /**
+     * Additional Tailwind CSS classes for the container.
+     * Defaults to ''.
+     */
+    className?: string;
+};
 
 export type CustomPageComponent = NextComponentType<NextPageContext, any, any> & {
   noLayout?: boolean;

@@ -6,21 +6,22 @@ import Footer from '../components/Footer';
 import Notification from '../components/Notification';
 
 
+
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col  ">
       <Header />
-      <div className="flex flex-1">
+      <main className="flex min-h-(--cb-main-hgt) max-h-(--cb-main-hgt)">
         <LeftAside />
-        <div className="flex-1 p-4 b-root">
+        <div className="flex-1 p-4 b-root min-w-0 overflow-x-auto">
           {children}
         </div>
         <RightAside />
-      </div>
+      </main>
       <Footer />
       <Notification message={'Welcome!'} />
     </div>

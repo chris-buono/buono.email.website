@@ -9,9 +9,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 function BuonoEmail({ Component, pageProps }: AppProps) {
     const CustomComponent = Component as CustomPageComponent;
-    
     return (
-        <div className={inter.className}>
+        <div className={`min-h-screen max-h-screen ${inter.className}`}>
             <Head />
             {CustomComponent.noLayout ? (
                 <CustomComponent {...pageProps} />

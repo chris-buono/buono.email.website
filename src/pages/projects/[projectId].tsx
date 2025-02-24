@@ -7,21 +7,13 @@ import path from 'path';
 import DOMPurify from 'isomorphic-dompurify';
 import React, { useState } from 'react';
 import { Project } from '@/types/global';
+import ImageCarousel from '@/components/ImageCarousel';
 
 interface ProjectPageProps {
   projectData: Project;
 }
 
 const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = projectData.media.images.length;
-
-  const showPreviousSlide = () =>
-    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-
-  const showNextSlide = () =>
-    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
-
   // JSON-LD structured data for SEO
   const jsonLD = {
     "@context": "https://schema.org",
@@ -65,45 +57,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
         </header>
 
         {/* Image Carousel */}
-        <section aria-label="Image Carousel" className="mb-8">
-          <div className="relative" role="region">
-            <div className="overflow-hidden relative h-64 rounded-lg">
-              {projectData.media.images.map((img, index) => (
-                <div
-                  key={index}
-                  className={index === currentSlide ? 'block' : 'hidden'}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    className="object-cover"
-                    fill
-                    sizes="100vw"
-                    style={{
-                      objectFit: "cover"
-                    }} />
-                </div>
-              ))}
-              {/* Carousel Controls */}
-              <button
-                type="button"
-                aria-label="Previous Slide"
-                onClick={showPreviousSlide}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white p-2"
-              >
-                Prev
-              </button>
-              <button
-                type="button"
-                aria-label="Next Slide"
-                onClick={showNextSlide}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white p-2"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </section>
+        <ImageCarousel images={projectData.media.images} />
 
         {/* Text Content */}
         {projectData.textContent && (

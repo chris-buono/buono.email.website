@@ -27,12 +27,12 @@ const Notification: React.FC<NotificationProps> = ({
   const typeClasses: Record<ToastType, string> = {
     success: 'bg-green-500',
     error: 'bg-red-500',
-    info: 'bg-gray-900',
+    info: 'bg-white',
   };
 
   return (
     <div
-      className={`fixed top-5 left-5 ${typeClasses[type]} text-white px-6 py-3 rounded-sm shadow-lg transition-opacity duration-300`}
+      className={`fixed text-sm bold bottom-5 left-5 ${typeClasses[type]} text-black px-3 py-1 rounded-sm shadow-lg transition-opacity duration-300`}
     >
       {message}
     </div>

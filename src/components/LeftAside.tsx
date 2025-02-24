@@ -18,9 +18,9 @@ import { usePathname } from 'next/navigation';
 const EmailSidebar: React.FC = () => {
     const currentPathname = usePathname()
     return (
-        (<div className="bg-gray-900 p-4 w-64 md:block hidden">
+        <div id='cb-left-menu' className="bg-gray-900 p-4 w-64 md:block hidden">
             <div className="p-2 pt-0">
-                <div className="flex flex-col items-center space-y-4">
+                <div className="pb-4">
                     <Link href="/">
                         <Image
                             src={logo}
@@ -32,7 +32,7 @@ const EmailSidebar: React.FC = () => {
                             }} />
                     </Link>
                 </div>
-                <hr className="py-2 opacity-30" />
+                <hr className="pb-4 opacity-30" />
                 <nav>
                     <ul className="space-y-1">
                     <li>
@@ -86,7 +86,7 @@ const EmailSidebar: React.FC = () => {
                     </ul>
                 </nav>
             </div>
-        </div>)
+        </div>
     );
 };
 

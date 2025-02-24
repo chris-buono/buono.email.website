@@ -66,10 +66,10 @@ const UserProfileSidebar: React.FC = () => {
     };
 
   return (
-    (<div className="bg-gray-900 p-4 w-64 md:block hidden">
+    <div id='cb-right-menu' className="bg-gray-900 p-4 w-64 md:block hidden flex-none">
       <div className="p-2">
         {/* User Profile */}
-        <div className="flex flex-col items-center space-y-4">
+        <div className="flex flex-col items-center space-y-4 pb-4">
           <Image
             src={chris}
             alt="Image of Chris"
@@ -82,9 +82,9 @@ const UserProfileSidebar: React.FC = () => {
           <h2 className="text-xl font-semibold mb-0 text-stone-100">Chris Buono</h2>
           <p className='text-xs font-normal text-center text-stone-50'>Welcome to the inbox of my mind.</p>
         </div>
-        <hr className="mt-2 opacity-30" />
+        <hr className="pb-4 opacity-30" />
         {/* Navigation */}
-        <nav className="mt-2">
+        <nav>
           <ul className="space-y-1">
             {menuitems.map((itm, index) => {
               const Icon = itm?.icon;
@@ -101,7 +101,7 @@ const UserProfileSidebar: React.FC = () => {
           </ul>
         </nav>
       </div>
-    </div>)
+    </div>
   );
 };
 
