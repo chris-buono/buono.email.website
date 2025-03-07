@@ -49,32 +49,71 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
       />
     </Head>
     <div className="bg-gray-100 text-gray-800 min-h-screen">
-      <div className="container mx-auto p-4">
         {/* Header */}
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold mb-2">{projectData.title}</h1>
-          <p className="text-xl text-gray-600 mb-4">{projectData.subtitle}</p>
+        <header className="text-center md:text-left">
+          <h1 className="text-4xl font-bold text-gray-900">{projectData.title}</h1>
+          <p className="text-xl text-gray-600 mt-2">{projectData.subtitle}</p>
         </header>
-
-        {/* Image Carousel */}
-        <ImageCarousel images={projectData.media.images} />
-
-        {/* Text Content */}
-        {projectData.textContent && (
-          <div className="mb-6">
-            <p>{DOMPurify.sanitize(projectData.textContent)}</p>
+        <section className="flex flex-col md:flex-row gap-6 mt-6">
+          <div className="lg:w-2/5 order-2 lg:order-1">
+            {/* Text Content */}
+            {projectData.textContent && (
+              <p className="text-lg text-gray-700 mb-4">{DOMPurify.sanitize(projectData.textContent)}</p>
+            )}
+            {projectData.textContentExt && (
+              <p className="text-lg text-gray-700 mb-4">{DOMPurify.sanitize(projectData.textContentExt)}</p>
+            )}
           </div>
-        )}
+          <div className="lg:w-3/5 order-1 lg:order-2 flex flex-col gap-6">
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              {/* Image Carousel */}
+              <ImageCarousel images={projectData.media.images} />
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              {/* Project Stats */}
+              {projectData.stats && (
+                <section className="mb-8">
+                  <h2 className="text-2xl font-semibold mb-4">Project Statistics</h2>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full bg-white shadow-md rounded-lg">
+                      <thead>
+                        <tr>
+                          <th className="border px-4 py-2 text-left">Metric</th>
+                          <th className="border px-4 py-2 text-left">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {Object.entries(projectData.stats).map(([key, value], index) => (
+                          <tr key={index}>
+                            <td className="border px-4 py-2">
+                              {DOMPurify.sanitize(key)}
+                            </td>
+                            <td className="border px-4 py-2">
+                              {DOMPurify.sanitize(String(value))}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              )}
+            </div>
+          </div>
+        </section>
 
         {/* External Links */}
         {projectData.media.externalLinks && projectData.media.externalLinks.length > 0 && (
-          <section className="mb-8">
+          <footer className="my-6">
             <h2 className="text-2xl font-semibold mb-4">Related Links</h2>
-            <ul className="list-disc list-inside">
+            <ul className="list-inside">
               {projectData.media.externalLinks.map((link, index) => (
                 <li key={index}>
+                  {link.beforeLinkText && (
+                    <>{DOMPurify.sanitize(link.beforeLinkText)} </>
+                  )}
                   <a
-                    href={link.href}
+                    href={link.url}
                     target="_blank"
                     rel={
                       link.isAffiliate
@@ -91,42 +130,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
                       </span>
                     )}
                   </a>
+                  {link.afterLinkText && (
+                    <> {DOMPurify.sanitize(link.afterLinkText)}</>
+                  )}
                 </li>
               ))}
             </ul>
-          </section>
-        )}
-
-        {/* Project Stats */}
-        {projectData.stats && (
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">Project Statistics</h2>
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white shadow-md rounded-lg">
-                <thead>
-                  <tr>
-                    <th className="border px-4 py-2 text-left">Metric</th>
-                    <th className="border px-4 py-2 text-left">Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(projectData.stats).map(([key, value], index) => (
-                    <tr key={index}>
-                      <td className="border px-4 py-2">
-                        {DOMPurify.sanitize(key)}
-                      </td>
-                      <td className="border px-4 py-2">
-                        {DOMPurify.sanitize(String(value))}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+          </footer>
         )}
       </div>
-    </div>
   </>);
 };
 
@@ -167,6 +179,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false // Adjust fallback if you plan to add new projects without rebuilding
+    fallback: false
   };
 };

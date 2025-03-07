@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MdMenu, MdPerson, MdOutlineHandshake, MdOutlineFolderCopy } from 'react-icons/md';
 import chris from '../assets/chris.jpg';
+import logo from '../assets/buono.email.web.w.svg';
 
 // Define profile menu items for the dropdown
 const profileMenuItems = [
@@ -13,32 +14,30 @@ const profileMenuItems = [
 
 const Header: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  // Placeholder function to toggle EmailSidebar (implementation depends on your setup)
-  const toggleEmailSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-    // Add logic to show/hide EmailSidebar
-  };
 
   return (
-    <header className="bg-gray-800 p-4 flex justify-between items-center">
-      {/* Hamburger button to toggle EmailSidebar */}
-      <button
-        onClick={toggleEmailSidebar}
-        aria-label="Toggle email sidebar"
-        className="text-white"
-      >
-        <MdMenu className="text-2xl" />
-      </button>
+    <header className="bg-gray-800 py-2 px-4 flex justify-between items-center max-h-(--cb-hdr-max-hgt) min-h-(--cb-hdr-min-hgt)">
+
+      <Link href="/" className='z-100'>
+        <Image
+          src={logo}
+          alt="buono.email logo"
+          className="w-30 h-10 stroke-white"
+          style={{ maxWidth: '100%', height: 'auto' }}
+          unoptimized
+        />
+      </Link>
+
 
       {/* User's avatar to toggle profile dropdown */}
-      <div className="relative">
+      <div className="relative md:hidden">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           aria-label="Toggle profile menu"
-          className="focus:outline-none"
+          className="focus:outline-none flex items-center space-x-3 text-sm"
         >
+          <h2 className='flex'>Chris Buono</h2>
+          <p className='text-xs font-normal text-center text-stone-50'>Welcome to the inbox of my mind.</p>
           <Image
             src={chris}
             alt="Chris"

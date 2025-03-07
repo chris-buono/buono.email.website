@@ -37,8 +37,11 @@ export interface TimeDisplayProps {
 
 export interface ExternalLink {
     text: string;
-    href: string;
+    label?: string;
+    url: string;
     isAffiliate: boolean;
+    afterLinkText?: string;
+    beforeLinkText?: string;
 }
   
 export interface Download {
@@ -49,11 +52,16 @@ export interface Download {
 export interface ImageProps {
     src: string;
     alt: string;
+    quality?: number;
+    fill?: boolean;
+    placeholder?: string;
+    customClasses?: string;
 }
 
 export interface CarouselProps {
     images: ImageProps[];
     alt?: string;
+    className?: string;
 }
 
 
@@ -71,6 +79,7 @@ export interface Project {
   media: Media;
   description: string;
   textContent: string;
+  textContentExt?: string;
   steps?: string[];
   stats?: Record<string | Node, string | Node>;
   navigation?: string;

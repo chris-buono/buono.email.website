@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from 'next/link';
 import chris from '../assets/chris.jpg';
 import { MdPerson, MdOutlineHandshake, MdOutlineFolderCopy } from "react-icons/md";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+
 import { usePathname } from 'next/navigation';
 import DOMPurify from 'isomorphic-dompurify';
-
 
 /*
 Pages
@@ -35,22 +36,25 @@ const menuitems: AsideMenu[] = [
     id: 1,
     navigation: "/profile",
     icon: MdPerson,
-    setNotice: "Hi team, please be reminded of our meeting scheduled at 3 PM in the conference room. Agenda includes quarterly reviews and upcoming project plans.",
     linkTitle: "Profile"
   },
   {
     id: 2,
     navigation: "/projects",
     icon: MdOutlineFolderCopy,
-    setNotice: "Hi team, please be reminded of our meeting scheduled at 3 PM in the conference room. Agenda includes quarterly reviews and upcoming project plans.",
     linkTitle: "Projects"
   },
   {
     id: 3,
     navigation: "/contact",
     icon: MdOutlineHandshake,
-    setNotice: "Hi team, please be reminded of our meeting scheduled at 3 PM in the conference room. Agenda includes quarterly reviews and upcoming project plans.",
     linkTitle: "Contact"
+  },
+  {
+    id: 4,
+    navigation: "/support",
+    icon: RiMoneyDollarCircleLine,
+    linkTitle: "Support"
   },
 ];
 
@@ -66,7 +70,7 @@ const UserProfileSidebar: React.FC = () => {
     };
 
   return (
-    <div id='cb-right-menu' className="bg-gray-800 p-4 w-64 md:block hidden flex-none">
+    <div id='cb-right-menu' className="bg-gray-800 w-64 md:block hidden flex-none">
       <div className="p-2">
         {/* User Profile */}
         <div className="flex flex-col items-center space-y-4 pb-4">
@@ -85,15 +89,16 @@ const UserProfileSidebar: React.FC = () => {
         <hr className="pb-4 opacity-30" />
         {/* Navigation */}
         <nav>
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {menuitems.map((itm, index) => {
               const Icon = itm?.icon;
               const subpath = getSubpath(itm.navigation);
               return (
                 <li key={index}>
                   <Link href={itm.navigation} className={`flex ${currentPathname.startsWith(itm.navigation) ? 'bg-white/20' : 'bg-white/0 hover:bg-sky-100/15'} text-white text-md py-1 px-4 rounded-full transition-colors items-center`}>
-                    {Icon && <Icon className="mr-2 text-lg" />}
-                    {itm.linkTitle}{subpath && (<span className="sr-only">currently viewing {subpath}</span>)}
+                    {Icon && <Icon className={`w-5 h-5 flex-shrink-0`} />}
+                    <span className='ml-2'>{itm.linkTitle}</span>
+                    {subpath && (<span className="sr-only">currently viewing {subpath}</span>)}
                   </Link>
                 </li>
               );

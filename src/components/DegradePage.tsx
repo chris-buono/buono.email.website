@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { MdOutlineClose } from "react-icons/md";
 import Image from "next/image";
+import { usePathname } from 'next/navigation';
+import { pushToDataLayer } from '../utils/gtm';
 /*
     I created a shell function that added basic blur and gifs, then used AI to fix some of the errors and add in the character removal as it came to mind.
     This introduced new errors due to project context. So I manually adjusted and worked through the individual errors,
@@ -45,6 +47,7 @@ const DegradePage: React.FC<DegradePageProps> = ({ children }) => {
   const originalTextMapRef = useRef<Map<Element, string>>(new Map());
   const gifElementsRef = useRef<HTMLImageElement[]>([]);
   const transitionTime = '120s';
+  const pathname = usePathname();
 
   const getNoticeContainer = useCallback(() => {
     if (!isClient) return null;
@@ -54,8 +57,13 @@ const DegradePage: React.FC<DegradePageProps> = ({ children }) => {
       container.id = 'degrade-experiment-notice-root';
       document.documentElement.appendChild(container);
     }
+    try {
+      pushToDataLayer({ event: 'degrade_experience', location: {pathname} });
+    } catch (error) {
+      console.error(error);
+    }
     return container;
-  }, [isClient]);
+  }, [isClient, pathname]);
 
   const handleReset = () => {
     setIsDegrading(false);
@@ -201,8 +209,6 @@ const DegradePage: React.FC<DegradePageProps> = ({ children }) => {
     position: 'relative'
   };
 
-  // Unsure if its a Vite thing but for some reason this div acts different with TW classes setting the position alone.
-  // TODO_LOW: Check if prod build requires this, address later.
   const noteStyle: React.CSSProperties = {
     position: 'fixed',
     bottom: '10px',
@@ -210,8 +216,8 @@ const DegradePage: React.FC<DegradePageProps> = ({ children }) => {
   };
 
   const noteElement = (
-    <div style={noteStyle} onClick={handleReset} className='rounded-full bg-white text-stone-950 text-sm/6 cursor-pointer flex items-center px-4 py-2 shadow-red-500'>
-      <MdOutlineClose className="mr-3 rounded-full border-red-800 border-2 text-stone-950 text-base" />
+    <div style={noteStyle} onClick={handleReset} className='rounded-full bg-white text-stone-950 text-sm/6 cursor-pointer flex items-center px-4 py-2 inset-ring-red-500'>
+      <MdOutlineClose className="mr-3 rounded-full border-red-800 border-2 text-red-800 text-base" />
       Enjoy an experiment while you Loiter.
     </div>
   );

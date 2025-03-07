@@ -1,5 +1,6 @@
 import React from 'react';
 import Image, { StaticImageData } from "next/image";
+import Link from 'next/link';
 
 interface CardProps {
     imageSrc: StaticImageData;
@@ -60,9 +61,9 @@ const ProjectCard: React.FC<CardProps> = ({
   return (
       <>
         {navigation ? (
-          <a className="shadow-lg rounded transform transition duration-250 hover:scale-104 hover:shadow-2xl cursor-pointer" href={navigation}>
+          <Link className="shadow-lg rounded transform transition duration-250 hover:scale-104 hover:shadow-2xl cursor-pointer" href={navigation}>
             {content}
-          </a>
+          </Link>
         ) : (
           content
         )}

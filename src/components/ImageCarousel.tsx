@@ -8,24 +8,25 @@ import 'swiper/css/a11y';
 import Image from 'next/image';
 import { CarouselProps } from '@/types/global';
 
-const ImageCarousel: React.FC<CarouselProps> = ({ images }) => {
+const ImageCarousel: React.FC<CarouselProps> = ({ className, images }) => {
   return (
     <section className="mb-8">
-        <div className="overflow-hidden relative h-120 rounded-lg">
+        <div className={`overflow-hidden relative h-120 rounded-lg${className ? ` ${className}` : ''}`}>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={10}
                 slidesPerView={1}
                 navigation={{ prevEl: '.sw-prev', nextEl: '.sw-next' }}
-                scrollbar={{ draggable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
                 a11y={{ enabled: true, containerMessage: 'Image Carousel', prevSlideMessage: 'Previous Slide', nextSlideMessage: 'Next Slide' }}
                 className="w-full h-full"
+                loop={true}
+                pagination={true}
             >
             {images.map((img, index) => (
                 <SwiperSlide key={index} className="h-full rounded-lg">
-                    <Image src={img.src} alt={img.alt} fill sizes="100vw" className="object-cover" style={{ objectFit: 'cover' }} />
+                    <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className={img.fill ? 'object-cover' : 'object-contain'}/>
                 </SwiperSlide>
             ))}
             </Swiper>

@@ -32,7 +32,7 @@ const Notification: React.FC<NotificationProps> = ({
 
   return (
     <div
-      className={`fixed text-sm bold bottom-5 left-5 ${typeClasses[type]} text-black px-3 py-1 rounded-sm shadow-lg transition-opacity duration-300`}
+      className={`fixed text-sm bold bottom-5 left-5 ${typeClasses[type]} text-black px-3 py-1 rounded-sm shadow-lg transition-opacity duration-300 z-100`}
     >
       {message}
     </div>

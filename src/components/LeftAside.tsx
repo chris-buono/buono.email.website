@@ -1,66 +1,56 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
+// EmailSidebar.tsx
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { MdDelete, MdOutlineReport, MdEditDocument, MdOutlineSend, MdLabelImportantOutline, MdInbox, MdMenu, MdClose } from 'react-icons/md';
-import logo from '../assets/buono.email.web.w.svg';
+import { MdDelete, MdOutlineReport, MdEditDocument, MdOutlineSend, MdLabelImportantOutline, MdInbox, MdMenu } from 'react-icons/md';
+import { useSidebar } from './sidebarContext';
 
 const EmailSidebar: React.FC = () => {
-  // State to manage the sidebar's open/closed status on mobile
-  const [isOpen, setIsOpen] = useState(false);
+  const { isExpanded, toggleSidebar } = useSidebar();
   const currentPathname = usePathname();
+  const [removeSmClass, setRemoveSmClass] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => setRemoveSmClass(true), 0);
+  }, []);
+  
   return (
-    <div className="relative">
-      {/* Hamburger button: Visible only on mobile (hidden on md and up) */}
-      <button
-        className="p-2 fixed top-4 left-4 z-50"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
-      >
-        {isOpen ? (
-          <MdClose className="text-2xl text-white" />
-        ) : (
-          <MdMenu className="text-2xl text-white" />
-        )}
-      </button>
-
-      {/* Overlay: Appears when sidebar is open on mobile to dim the background and allow closing by clicking outside */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-30"
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Sidebar container: Handles positioning and visibility across screen sizes */}
-      <div
+    <>
+      {/* Sidebar container */}
+      <div id='sidebarContainer'
         className={`
-          fixed inset-y-0 left-0 w-64 bg-gray-800 transform
-          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-          transition-transform duration-300 ease-in-out
-          md:relative md:translate-x-0 md:block z-40
+          relative left-0 bg-gray-800 transform
+          ${removeSmClass ? '' : 'sm:w-64'}
+          transition-all duration-300 ease-in-out overflow-hidden
+          ${isExpanded ? 'w-64' : 'w-12 no-text'}
+          z-40
         `}
       >
-        {/* Inner container with padding adjustments */}
-        <div className="p-4 pt-16 md:pt-4">
+        {/* Toggle button for desktop */}
+        <button
+          className={`p-2 top-4 z-50 md:flex cursor-pointer`}
+          onClick={toggleSidebar}
+          aria-label={isExpanded ? 'Collapse sidebar' : 'Expand sidebar'}
+        >
+          <MdMenu className={`w-8 h-8 flex-shrink-0`} />
+        </button>
+
+        {/* Sidebar content: Hidden when collapsed on desktop */}
+        <div
+          className={`
+            p-2 pt-4 transition-all
+            ${isExpanded ? 'w-64' : 'w-12 no-text'}
+            xxl:block
+            xxl:w-64
+          `}
+        >
           {/* Logo section */}
-          <div className="pb-4">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="buono.email logo"
-                className="w-50 h-20 stroke-white"
-                style={{ maxWidth: '100%', height: 'auto' }}
-              />
-            </Link>
-          </div>
+
           <hr className="pb-4 opacity-30" />
 
           {/* Navigation menu */}
           <nav>
-            <ul className="space-y-1">
+            <ul className="space-y-2">
               <li>
                 <Link
                   href="/inbox"
@@ -68,10 +58,10 @@ const EmailSidebar: React.FC = () => {
                     currentPathname === '/inbox'
                       ? 'bg-white/20'
                       : 'bg-white/0 hover:bg-sky-100/15'
-                  } text-white text-md py-1 px-4 rounded-full transition-colors items-center`}
+                  } text-white text-md py-1 px-${isExpanded ? '4' : '1.5'} rounded-full transition-all items-center`}
                 >
-                  <MdInbox className="mr-2 text-lg" />
-                  Inbox
+                  <MdInbox className={`w-5 h-5 flex-shrink-0`} />
+                  <span className='no-text-tgt ml-2'>Inbox</span>
                 </Link>
               </li>
               <li>
@@ -81,10 +71,10 @@ const EmailSidebar: React.FC = () => {
                     currentPathname === '/important'
                       ? 'bg-white/20'
                       : 'bg-white/0 hover:bg-sky-100/15'
-                  } text-white text-md py-1 px-4 rounded-full transition-colors items-center`}
+                  } text-white text-md py-1 px-${isExpanded ? '4' : '1.5'} rounded-full transition-all items-center`}
                 >
-                  <MdLabelImportantOutline className="mr-2 text-lg" />
-                  Important
+                  <MdLabelImportantOutline className={`w-5.5 h-5 flex-shrink-0`} />
+                  <span className='no-text-tgt ml-2'>Important</span>
                 </Link>
               </li>
               <li>
@@ -94,10 +84,10 @@ const EmailSidebar: React.FC = () => {
                     currentPathname === '/sent'
                       ? 'bg-white/20'
                       : 'bg-white/0 hover:bg-sky-100/15'
-                  } text-white text-md py-1 px-4 rounded-full transition-colors items-center`}
+                  } text-white text-md py-1 px-${isExpanded ? '4' : '1.5'} rounded-full transition-all items-center`}
                 >
-                  <MdOutlineSend className="mr-2 text-lg" />
-                  Sent
+                  <MdOutlineSend className={`w-5.5 h-5 flex-shrink-0`} />
+                  <span className='no-text-tgt ml-2'>Sent</span>
                 </Link>
               </li>
               <li>
@@ -107,10 +97,10 @@ const EmailSidebar: React.FC = () => {
                     currentPathname === '/drafts'
                       ? 'bg-white/20'
                       : 'bg-white/0 hover:bg-sky-100/15'
-                  } text-white text-md py-1 px-4 rounded-full transition-colors items-center`}
+                  } text-white text-md py-1 px-${isExpanded ? '4' : '1.5'} rounded-full transition-all items-center`}
                 >
-                  <MdEditDocument className="mr-2 text-lg" />
-                  Drafts
+                  <MdEditDocument className={`w-5 h-5 flex-shrink-0`} />
+                  <span className='no-text-tgt ml-2'>Drafts</span>
                 </Link>
               </li>
               <li>
@@ -120,10 +110,10 @@ const EmailSidebar: React.FC = () => {
                     currentPathname === '/trash'
                       ? 'bg-white/20'
                       : 'bg-white/0 hover:bg-sky-100/15'
-                  } text-white text-md py-1 px-4 rounded-full transition-colors items-center`}
+                  } text-white text-md py-1 px-${isExpanded ? '4' : '1.5'} rounded-full transition-all items-center`}
                 >
-                  <MdDelete className="mr-2 text-lg" />
-                  Trash
+                  <MdDelete className={`w-5 h-5 flex-shrink-0`} />
+                  <span className='no-text-tgt ml-2'>Trash</span>
                 </Link>
               </li>
               <li>
@@ -133,17 +123,17 @@ const EmailSidebar: React.FC = () => {
                     currentPathname === '/spam'
                       ? 'bg-white/20'
                       : 'bg-white/0 hover:bg-sky-100/15'
-                  } text-white text-md py-1 px-4 rounded-full transition-colors items-center`}
+                  } text-white text-md py-1 px-${isExpanded ? '4' : '1.5'} rounded-full transition-all items-center`}
                 >
-                  <MdOutlineReport className="mr-2 text-lg" />
-                  Spam
+                  <MdOutlineReport className={`w-5 h-5 flex-shrink-0`} />
+                  <span className='no-text-tgt ml-2'>Spam</span>
                 </Link>
               </li>
             </ul>
           </nav>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

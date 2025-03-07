@@ -1,19 +1,23 @@
 {
     "title": "Worldsy",
     "subtitle": "Event Based News Aggregator",
-    "description": "Semi-Abandoned event based news aggregator",
+    "description": "Description of the project",
+    "textContent": "Worldsy is a semi-abandoned project. I only do critical updates and as time allows. I automated most of the processes but, being 13+ yr old code its shocking how well it still runs. It is an event based news aggregator at heart. We created Worldsy at a time (some say too early) where we understood that the news was very heavily one sided. Unfortunately the world became more split and the project did as well. Worldsy is meant to be unbiased and eventually a tool for event based news data in schools. The site was never meant to be launched as it was only meant to verify the data for us internally.",
     "media": {
         "images": [
             {"src": "/projects/worldsy/worldsy.jpg",
-            "alt": "alt1"},
+            "alt": "Worldsy Logo"},
             {"src": "/projects/worldsy/worldsy_whiteboard.jpg",
-            "alt": "alt2"}
+            "alt": "A whiteboard that has some sketches of early ideas of Worldsy on it"},
+            {"src": "/projects/worldsy/worldsy_load_03072025.webp",
+            "alt": "Worldsy website loading (Average around 2.6sec)"}
         ],
         "externalLinks": [
             {
-                "label": "Worldsy",
+                "text": "Worldsy",
                 "url": "https://worldsy.com",
-                "isAffiliate": false
+                "isAffiliate": false,
+                "beforeLinkText": "Testing"
             }
         ],
         "downloads": [
@@ -27,9 +31,10 @@
         "1) Do this",
         "2) Do that"
     ],
-    "textContent": "Description of the project",
     "stats": {
-        "Weight": "1kg",
-        "Material": "PLA"
+        "Technologies": "HTML, CSS, JS, Python, Apache, PHP",
+        "Project Timeline": "~2011 - Current*",
+        "Category": "News Aggregator"
+
     }
 }
