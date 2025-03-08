@@ -3,9 +3,9 @@ import Header from '../components/Header';
 import LeftAside from '../components/LeftAside';
 import RightAside from '../components/RightAside';
 import Footer from '../components/Footer';
-import Notification from '../components/Notification';
 import { SidebarProvider } from './sidebarContext';
-
+import { useNotification } from '@/context/NotificationContext';
+import Notification from './Notification';
 
 
 type LayoutProps = {
@@ -13,6 +13,7 @@ type LayoutProps = {
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+    const { notification } = useNotification();
   return (
     <div className="flex flex-col">
         <SidebarProvider>
@@ -25,8 +26,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <RightAside />
             </main>
             <Footer />
-            <Notification message={'Welcome!'} />
-      </SidebarProvider>
+            {notification && (
+                <Notification
+                message={notification.message}
+                type={notification.type}
+                duration={notification.duration}
+                icon={notification.icon}
+                />
+            )}
+        </SidebarProvider>
     </div>
   );
 };

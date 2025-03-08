@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IconType } from 'react-icons';
 
 export type ToastType = 'success' | 'error' | 'info';
 
@@ -6,6 +7,7 @@ export interface NotificationProps {
   message: string;
   type?: ToastType;
   duration?: number;// Duration in milliseconds
+  icon?: IconType;
 }
 
 const Notification: React.FC<NotificationProps> = ({

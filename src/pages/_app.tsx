@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { CustomPageComponent } from '@/types/global';
+import { NotificationProvider } from '@/context/NotificationContext';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
 import { Inter } from 'next/font/google';
@@ -21,13 +22,15 @@ function BuonoEmail({ Component, pageProps }: AppProps) {
     return (
         <div className={`min-h-screen max-h-screen ${inter.className}`}>
             <Head />
-            {CustomComponent.noLayout ? (
-                <CustomComponent {...pageProps} />
-            ) : (
-                <Layout>
+            <NotificationProvider>
+                {CustomComponent.noLayout ? (
                     <CustomComponent {...pageProps} />
-                </Layout>
-            )}
+                ) : (
+                    <Layout>
+                        <CustomComponent {...pageProps} />
+                    </Layout>
+                )}
+            </NotificationProvider>
         </div>
     );
 

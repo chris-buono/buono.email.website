@@ -2,7 +2,10 @@
     "title": "Worldsy",
     "subtitle": "Event Based News Aggregator",
     "description": "Description of the project",
+    "textContentTitle":"Title",
     "textContent": "Worldsy is a semi-abandoned project. I only do critical updates and as time allows. I automated most of the processes but, being 13+ yr old code its shocking how well it still runs. It is an event based news aggregator at heart. We created Worldsy at a time (some say too early) where we understood that the news was very heavily one sided. Unfortunately the world became more split and the project did as well. Worldsy is meant to be unbiased and eventually a tool for event based news data in schools. The site was never meant to be launched as it was only meant to verify the data for us internally.",
+    "textContentExtTitle":"Title 2",
+    "textContentExt": "Worldsy is a semi-abandoned project. I only do critical updates and as time allows. I automated most of the processes but, being 13+ yr old code its shocking how well it still runs. It is an event based news aggregator at heart. We created Worldsy at a time (some say too early) where we understood that the news was very heavily one sided. Unfortunately the world became more split and the project did as well. Worldsy is meant to be unbiased and eventually a tool for event based news data in schools. The site was never meant to be launched as it was only meant to verify the data for us internally.",
     "media": {
         "images": [
             {"src": "/projects/worldsy/worldsy.jpg",
@@ -10,7 +13,8 @@
             {"src": "/projects/worldsy/worldsy_whiteboard.jpg",
             "alt": "A whiteboard that has some sketches of early ideas of Worldsy on it"},
             {"src": "/projects/worldsy/worldsy_load_03072025.webp",
-            "alt": "Worldsy website loading (Average around 2.6sec)"}
+            "alt": "Worldsy website loading (Average around 2.6sec)",
+            "unoptimized": true}
         ],
         "externalLinks": [
             {

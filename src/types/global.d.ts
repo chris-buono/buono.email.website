@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode, MouseEventHandler } from 'react';
 import { NextComponentType, NextPageContext } from 'next';
+import { StaticImageData } from 'next/image';
 
 declare module '*.svg' {
     import { FC, SVGProps } from 'react'
@@ -50,13 +51,14 @@ export interface Download {
 }
 
 export interface ImageProps {
-    src: string;
+    src: string | StaticImageData;
     alt: string;
     quality?: number;
     fill?: boolean;
     placeholder?: string;
     customClasses?: string;
     unoptimized?: boolean;
+    priority?: boolean;
 }
 interface ProfileImageProps extends ImageProps {
     mediaDuration?: number;
