@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
@@ -47,7 +46,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
       <div className="bg-gray-100 text-gray-800 min-h-screen">
         <header className="text-center min-[1024px]:text-left px-2">
           <h1 className="text-4xl font-bold text-gray-900">{projectData.title}</h1>
-          <p className="text-xl text-gray-600 mt-2">{projectData.subtitle}</p>
+          <p className="text-xl text-gray-900 mt-2">{projectData.subtitle}</p>
         </header>
 
         <section className="flex flex-col min-[1024px]:flex-row gap-4 mt-6">
@@ -56,13 +55,13 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
             {/* Text Content */}
             <div className="p-2">
               {projectData.textContent && projectData.textContentTitle && (
-                <h2 className="text-xl text-gray-700 mb-4">{DOMPurify.sanitize(projectData.textContentTitle)}</h2>
+                <h2 className="text-xl font-semibold mb-4">{DOMPurify.sanitize(projectData.textContentTitle)}</h2>
               )}
               {projectData.textContent && (
                 <p className="text text-gray-700 mb-4">{DOMPurify.sanitize(projectData.textContent)}</p>
               )}
               {projectData.textContentExt && projectData.textContentExtTitle && (
-                <h2 className="text-xl text-gray-700 mb-4">{DOMPurify.sanitize(projectData.textContentExtTitle)}</h2>
+                <h2 className="text-xl font-semibold mb-4">{DOMPurify.sanitize(projectData.textContentExtTitle)}</h2>
               )}
               {projectData.textContentExt && (
                 <p className="text text-gray-700 mb-4">{DOMPurify.sanitize(projectData.textContentExt)}</p>
@@ -112,15 +111,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ projectData }) => {
                   <table className="min-w-full bg-white shadow-md rounded-lg">
                     <thead>
                       <tr>
-                        <th className="border px-4 py-2 text-left">Metric</th>
-                        <th className="border px-4 py-2 text-left">Value</th>
+                        <th className="border p-2 text-left">Metric</th>
+                        <th className="border p-2 text-left">Description</th>
                       </tr>
                     </thead>
                     <tbody>
                       {Object.entries(projectData.stats).map(([key, value], index) => (
                         <tr key={index}>
-                          <td className="border px-4 py-2">{DOMPurify.sanitize(key)}</td>
-                          <td className="border px-4 py-2">{DOMPurify.sanitize(String(value))}</td>
+                          <td className="border px-2 py-1">{DOMPurify.sanitize(key)}</td>
+                          <td className="border px-2 py-1">{DOMPurify.sanitize(String(value))}</td>
                         </tr>
                       ))}
                     </tbody>
