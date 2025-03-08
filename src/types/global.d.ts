@@ -57,13 +57,17 @@ export interface ImageProps {
     placeholder?: string;
     customClasses?: string;
 }
+interface ProfileImageProps extends ImageProps {
+    mediaDuration?: number;
+    type?: 'random';
+    notificationType?: string;
+}
 
 export interface CarouselProps {
     images: ImageProps[];
     alt?: string;
     className?: string;
 }
-
 
 export interface Media {
     images: ImageProps[];
