@@ -19,7 +19,9 @@ const images: ProfileImageProps[] = [
   { src: chris1, alt: 'Image of Chris', priority: true },
   { src: chris2, alt: 'Image of Chris 2', mediaDuration: 2000, type: 'random' },
   { src: chris3, alt: 'Image of Chris 3', mediaDuration: 3000, type: 'random' },
-  { src: chrisError, alt: 'Image of Chris error', mediaDuration: 1500, notificationType: 'error' },
+  { src: chrisError, alt: 'Chris is not happy that there is an error', mediaDuration: 1500, notificationType: 'error' },
+  { src: chrisError, alt: 'Chris is excited for the success', mediaDuration: 1500, notificationType: 'success' },
+  { src: chrisError, alt: 'Chris has some info for you', mediaDuration: 1500, notificationType: 'info' },
 ];
 
 // Menu items remain unchanged
@@ -48,7 +50,7 @@ const UserProfileSidebar: React.FC = () => {
   // Effect for random image swapping
   useEffect(() => {
     function scheduleNextSwap() {
-      const randomDelay = Math.floor(Math.random() * (100000 - 15000)) + 15000; // 15s to 100s
+      const randomDelay = Math.floor(Math.random() * (80000 - 10000)) + 15000; // 15s to 100s
       timeoutRef.current = window.setTimeout(() => {
         const randomGifIndices = images
           .map((img, index) => (img.type === 'random' ? index : -1))

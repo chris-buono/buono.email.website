@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   env: {
     pageTitle: ' - buono.email',
     basePageTitle: 'buono.email',
+    baseImage:'/buono.email_logo_og_image.jpg',
     version: '?v=EgTy8',
   },
   images: {

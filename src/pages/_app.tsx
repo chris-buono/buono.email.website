@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { CustomPageComponent } from '@/types/global';
 import { NotificationProvider } from '@/context/NotificationContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
 import { Inter } from 'next/font/google';
@@ -14,6 +15,8 @@ const tagManagerArgs = {
     gtmId: 'GTM-TRDF3LTP',
 };
 
+const queryClient = new QueryClient();
+
 function BuonoEmail({ Component, pageProps }: AppProps) {
     const CustomComponent = Component as CustomPageComponent;
     useEffect(()=>{
@@ -23,13 +26,15 @@ function BuonoEmail({ Component, pageProps }: AppProps) {
         <div className={`min-h-screen max-h-screen ${inter.className}`}>
             <Head />
             <NotificationProvider>
-                {CustomComponent.noLayout ? (
-                    <CustomComponent {...pageProps} />
-                ) : (
-                    <Layout>
+                <QueryClientProvider client={queryClient}>
+                    {CustomComponent.noLayout ? (
                         <CustomComponent {...pageProps} />
-                    </Layout>
-                )}
+                    ) : (
+                        <Layout>
+                            <CustomComponent {...pageProps} />
+                        </Layout>
+                    )}
+                </QueryClientProvider>
             </NotificationProvider>
         </div>
     );

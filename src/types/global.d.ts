@@ -102,20 +102,35 @@ export interface BaseMetadataProps {
     image?: string;
 }
 
+export interface Email {
+    id: string
+    thumbnail: string;
+    tags: string[];
+    subject: string;
+    sender: string;
+    content?: string;
+    snippet: string;
+    inboxDate?: TimeDisplayProps;
+    private?: boolean;
+    date?: number;
+}
+
+export interface EmailTypes {
+    type: 'inbox' | 'spam' | 'important' | 'sent' | 'drafts' | 'trash' | 'notes';
+}
+
+export interface EmailApiResponse {
+    emails: Email[];
+    hasMore: boolean;
+}
+  
+export interface EmailApiResponse {
+    emails: Email[];
+    hasMore: boolean;
+}
+
 declare global {
     type GlobalErrorHandler = (error: Error) => void;
-
-    type Email = {
-        id: number;
-        thumbnail: string;
-        tags: string[];
-        subject: string;
-        sender: string;
-        description: string;
-        content: string;
-        inboxDate?: TimeDisplayProps;
-        private?: boolean;
-    };
 
     type AsideMenu = {
         id: number;

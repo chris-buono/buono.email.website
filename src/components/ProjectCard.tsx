@@ -26,6 +26,9 @@ const ProjectCard: React.FC<CardProps> = ({
         <Image
           src={imageSrc}
           alt="card image"
+          sizes="((min-width: 50em) and (max-width: 60em)) 50em,
+              ((min-width: 30em) and (max-width: 50em)) 30em,
+              (max-width: 30em) 20em"
           className="w-full aspect-16/9 object-cover"
           style={{
             maxWidth: "100%",
