@@ -60,6 +60,7 @@ const ImageCarousel: React.FC<CarouselProps> = ({ className, images }) => {
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={img.fill ? 'object-cover' : 'object-contain'}
+                {...(img.unoptimized ? { unoptimized: true } : {})}
               />
             </SwiperSlide>
           ))}

@@ -56,6 +56,7 @@ export interface ImageProps {
     fill?: boolean;
     placeholder?: string;
     customClasses?: string;
+    unoptimized?: boolean;
 }
 interface ProfileImageProps extends ImageProps {
     mediaDuration?: number;
@@ -83,7 +84,9 @@ export interface Project {
   media: Media;
   description: string;
   textContent: string;
+  textContentTitle?: string;
   textContentExt?: string;
+  textContentExtTitle?: string;
   steps?: string[];
   stats?: Record<string | Node, string | Node>;
   navigation?: string;
